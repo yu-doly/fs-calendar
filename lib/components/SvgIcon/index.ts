@@ -87,7 +87,7 @@
     }
   }
 
-  var css_248z = "";
+  var css_248z = ".vc-svg-icon {\n  display: inline-block;\n  stroke: currentColor;\n  stroke-width: 0;\n}\n  .vc-svg-icon path {\n    fill: currentColor;\n  }\n";
   styleInject(css_248z);
 
   script.render = render;
