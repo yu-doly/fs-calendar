@@ -167,28 +167,32 @@ export default {
                       key: this.firstPage ? this.firstPage.key : '',
                     },
                     this.pages.map((page, i) =>
-                      h(CalendarPane, {
-                        ...this.$attrs,
-                        key: page && page.key,
-                        attributes: this.store,
-                        titlePosition: this.titlePosition_,
-                        page,
-                        minPage: this.minPage_,
-                        maxPage: this.maxPage_,
-                        canMove: this.canMove,
-                        'onUpdate:page': e => {
-                          this.refreshPages({ page: e, position: i + 1 });
+                      h(
+                        CalendarPane,
+                        {
+                          ...this.$attrs,
+                          key: page && page.key,
+                          attributes: this.store,
+                          titlePosition: this.titlePosition_,
+                          page,
+                          minPage: this.minPage_,
+                          maxPage: this.maxPage_,
+                          canMove: this.canMove,
+                          'onUpdate:page': e => {
+                            this.refreshPages({ page: e, position: i + 1 });
+                          },
+                          onDayfocusin: e => {
+                            this.lastFocusedDay = e;
+                            this.$emit('dayfocusin', e);
+                          },
+                          onDayfocusout: e => {
+                            this.lastFocusedDay = null;
+                            this.$emit('dayfocusout', e);
+                          },
+                          slots: this.$slots,
                         },
-                        onDayfocusin: e => {
-                          this.lastFocusedDay = e;
-                          this.$emit('dayfocusin', e);
-                        },
-                        onDayfocusout: e => {
-                          this.lastFocusedDay = null;
-                          this.$emit('dayfocusout', e);
-                        },
-                        slots: this.$slots,
-                      }),
+                        this.$slots,
+                      ),
                     ),
                   ),
               },

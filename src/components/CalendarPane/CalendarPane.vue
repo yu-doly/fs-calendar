@@ -70,11 +70,15 @@ export default {
           ),
         ),
         ...this.page.days.map(day =>
-          h(CalendarDay, {
-            ...this.$attrs,
-            day,
-            slots: this.$slots,
-          }),
+          h(
+            CalendarDay,
+            {
+              ...this.$attrs,
+              day,
+              slots: this.$slots,
+            },
+            this.$slots,
+          ),
         ),
       ],
     );
