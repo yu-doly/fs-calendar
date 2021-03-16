@@ -10675,7 +10675,9 @@
       }
     },
     beforeUnmount: function beforeUnmount() {
-      this.removeHandlers();
+      if (!this.disablePageSwipe) {
+        this.removeHandlers();
+      }
     },
     methods: {
       refreshLocale: function refreshLocale() {

@@ -368,7 +368,9 @@ export default {
     }
   },
   beforeUnmount() {
-    this.removeHandlers();
+    if (!this.disablePageSwipe) {
+      this.removeHandlers();
+    }
   },
   methods: {
     refreshLocale() {
